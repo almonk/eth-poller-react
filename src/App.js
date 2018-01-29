@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import PriceBlock from './PriceBlock.js';
+import CopyableInput from './CopyableInput.js';
+import Notifications, {notify} from 'react-notify-toast';
 
 class App extends Component {
   constructor () {
@@ -42,6 +44,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+        <Notifications />
         <PriceBlock
           code="GBP"
           price={this.state.data.GBP}
@@ -52,6 +55,9 @@ class App extends Component {
           price={this.state.data.USD}
           loading={this.state.loading}
         />
+
+        <CopyableInput value={this.state.data.GBP}/>
+        <CopyableInput value="1000"/>
       </div>
     );
   }
